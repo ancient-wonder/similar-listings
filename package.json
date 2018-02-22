@@ -1,17 +1,17 @@
 {
-  "name": "",
-  "version": "",
+  "name": "seabnb-similar-listings",
+  "version": "1.0",
   "description": "",
-  "author": "",
+  "author": "moriah rahamim",
   "license": "",
   "engines": {
     "node": ">=6.13.0"
   },
-  "scripts": {
-  },
-  "dependencies": {
-  },
+  "scripts": {},
+  "dependencies": {},
   "devDependencies": {
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor"
+    "eslint": "^4.18.1",
+    "eslint-config-hackreactor": "reactorcore/eslint-config-hackreactor",
+    "faker": "^4.1.0"
   }
 }
