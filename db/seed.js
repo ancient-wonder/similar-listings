@@ -9,6 +9,6 @@ var db = mongoose.connection;
 db.on('error', error => console.log('connection error:', error));
 db.once('open', () => {
   ListingModel.insertMany(data)
-  .then(results => console.log('done seeding database'))
-  .catch(error => console.error(error));
+    .then(results => console.log('done seeding database'))
+    .catch(error => console.error(error));
 });

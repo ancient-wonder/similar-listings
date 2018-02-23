@@ -10,7 +10,7 @@ const similarListingSchema = mongoose.Schema({
   numRatings: Number,
   avgStars: Number,
   thumbnailImage: String,
-})
+});
 
 const listingSchema = mongoose.Schema({
   id: {

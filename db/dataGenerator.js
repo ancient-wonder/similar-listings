@@ -9,7 +9,7 @@ const getRandomNum = (min, max, decimalPlaces) => {
   let minAdj = min * multiplier;
   let maxAdj = ((max - 1) * multiplier) + 1;
 
-  let randomNumAdj = Math.floor(Math.random() * (maxAdj - minAdj)) + minAdj
+  let randomNumAdj = Math.floor(Math.random() * (maxAdj - minAdj)) + minAdj;
   return randomNumAdj / multiplier;
 };
 
@@ -103,7 +103,7 @@ const generateSimilarListings = (settings) => {
         settings.avgStars.decimalPlaces
       ),
 
-      thumbnailImage: `https://picsum.photos/` +
+      thumbnailImage: 'https://picsum.photos/' +
                       `${settings.thumbnailImage.width}/` +
                       `${settings.thumbnailImage.height}` +
                       `?image=${id}`,
@@ -135,7 +135,7 @@ const createAndWriteToFile = (settings) => {
       return;
     }
     console.log('file saved!');
-  })
-}
+  });
+};
 
 createAndWriteToFile(settings);
