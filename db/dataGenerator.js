@@ -1,4 +1,5 @@
 const faker = require('faker');
+const fs = require('fs');
 
 // get a random number between min(inclusive) and max(non-inclusive).
 // [decimalPlaces]: optional. default to 0(integer) if not provided
@@ -10,14 +11,16 @@ const getRandomNum = (min, max, decimalPlaces) => {
 
   let randomNumAdj = Math.floor(Math.random() * (maxAdj - minAdj)) + minAdj
   return randomNumAdj / multiplier;
-}
+};
 
 // pick a random item from an array
 const pickRandomItem = array => {
   return array[getRandomNum(0, array.length)];
-}
+};
 
 const settings = {
+  similarListingsPerId: 10,
+
   id: {
     min: 0,
     max: 200, // non-inclusive
@@ -59,10 +62,13 @@ const settings = {
   },
 };
 
-const generateListings = (settings) => {
-  let array = [];
-  for (let id = settings.id.min; id < settings.id.max; id++) {
-    let document = {
+const generateSimilarListings = (settings) => {
+  let similarListings = [];
+
+  for (let i = 0; i < settings.similarListingsPerId; i++) {
+    let id = getRandomNum(settings.id.min, settings.id.max);
+
+    let similarListing = {
       id: id,
 
       url: `/listings/${id}`,
@@ -102,7 +108,34 @@ const generateListings = (settings) => {
                       `${settings.thumbnailImage.height}` +
                       `?image=${id}`,
     };
+    similarListings.push(similarListing);
+  }
+  return similarListings;
+};
+
+const generateListings = (settings) => {
+  let documents = [];
+  for (let id = settings.id.min; id < settings.id.max; id++) {
+    let document = {
+      id: id,
+      similarListings: generateSimilarListings(settings),
+    };
     array.push(document);
   }
-  return array;
+  return documents;
 };
+
+const createAndWriteToFile = (settings) => {
+  let data = generateListings(settings);
+  let filename = 'mock-data.js';
+
+  fs.writeFile(filename, JSON.stringify(data), (err) => {
+    if (err) {
+      console.error(err);
+      return;
+    }
+    console.log('file saved!');
+  })
+}
+
+createAndWriteToFile(settings);
