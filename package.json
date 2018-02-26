@@ -1,6 +1,6 @@
 {
   "name": "seabnb-similar-listings",
-  "version": "1.0",
+  "version": "1.0.0",
   "description": "",
   "author": "moriah rahamim",
   "license": "",
@@ -8,16 +8,34 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed": "node db/seed.js"
+    "seed": "node db/seed.js",
+    "server": "node server/index.js",
+    "server:watch": "nodemon server/index.js",
+    "compile": "webpack -d",
+    "compile:watch": "webpack -d --watch"
   },
   "dependencies": {
     "express": "^4.16.2",
-    "mongoose": "^5.0.7"
+    "mongoose": "^5.0.7",
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.3",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
     "eslint": "^4.18.1",
     "eslint-config-hackreactor": "github:reactorcore/eslint-config-hackreactor",
     "faker": "^4.1.0",
-    "nodemon": "^1.15.1"
+    "nodemon": "^1.15.1",
+    "webpack": "^4.0.0",
+    "webpack-cli": "^2.0.9"
+  },
+  "babel": {
+    "presets": [
+      "env",
+      "react"
+    ]
   }
 }
