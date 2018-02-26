@@ -15,7 +15,7 @@
   },
   "devDependencies": {
     "eslint": "^4.18.1",
-    "eslint-config-hackreactor": "git://github.com/reactorcore/eslint-config-hackreactor.git",
+    "eslint-config-hackreactor": "github:reactorcore/eslint-config-hackreactor",
     "faker": "^4.1.0",
     "nodemon": "^1.15.1"
   }
