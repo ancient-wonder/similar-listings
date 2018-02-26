@@ -23,13 +23,3 @@ const listingSchema = mongoose.Schema({
 const ListingModel = mongoose.model('Listing', listingSchema);
 
 module.exports = ListingModel;
-
-
-// mongoose.connect('mongodb://localhost/seabnb');
-
-// var db = mongoose.connection;
-
-// db.on('error', error => console.log('connection error:', error));
-// db.once('open', () => {
-
-// })
