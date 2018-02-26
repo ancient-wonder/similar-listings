@@ -11,8 +11,8 @@
     "seed": "node db/seed.js",
     "server": "node server/index.js",
     "server:watch": "nodemon server/index.js",
-    "compile": "webpack --debug --devtool inline-source-map --output-pathinfo",
-    "compile:watch": "webpack --debug --devtool inline-source-map --output-pathinfo --watch"
+    "compile": "webpack --debug --devtool inline-source-map --output-pathinfo --mode development",
+    "compile:watch": "webpack --debug --devtool inline-source-map --output-pathinfo --watch --mode development"
   },
   "dependencies": {
     "express": "^4.16.2",
