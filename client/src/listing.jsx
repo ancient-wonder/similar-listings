@@ -1,41 +1,38 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Details from './details';
 
-const Listing = ({info}) => {
+const Listing = ({id, url, thumbnailImage, additionalDetails}) => {
+
   const {
-    id,
-    url,
     title,
     type,
     numBeds,
     price,
     numRatings,
     avgStars,
-    thumbnailImage,
-  } = info;
-
-  const additionalDetails = {
-    title,
-    type,
-    numBeds,
-    price,
-    numRatings,
-    avgStars
-  };
+  } = additionalDetails;
 
   return (
-  <div className="similar-listing">
-    <img src={thumbnailImage} />
-    <div className="similar-listing-details">
-      put Details component here<br />
-      {JSON.stringify(additionalDetails)}<br />
+    <div className="similar-listing">
+      <img src={thumbnailImage} />
+      <Details
+        type={type}
+        numBeds={numBeds}
+        title={title}
+        price={price}
+        numRatings={numRatings}
+        avgStars={avgStars}
+      />
     </div>
-  </div>
-  )
+  );
 };
 
 Listing.propTypes = {
-  info: PropTypes.object.isRequired,
+  id: PropTypes.number.isRequired,
+  url: PropTypes.string.isRequired,
+  thumbnailImage: PropTypes.string, // TODO: default image if none provided
+  additionalDetails: PropTypes.object.isRequired,
 };
 
 export default Listing;

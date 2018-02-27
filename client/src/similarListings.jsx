@@ -11,14 +11,34 @@ class SimilarListings extends React.Component {
     };
   }
 
+  renderListing({id, url, thumbnailImage, title, type, numBeds, price, numRatings, avgStars}) {
+    const additionalDetails = {
+      title,
+      type,
+      numBeds,
+      price,
+      numRatings,
+      avgStars,
+      thumbnailImage
+    };
+    
+    return (
+      <Listing
+        key={id}
+        id={id}
+        url={url}
+        thumbnailImage={thumbnailImage}
+        additionalDetails={additionalDetails}
+      />
+    );
+  }
+
   render() {
     return (
       <div className="similar-listings">
         <h1>Similar Listings</h1>
         <div className="similar-listings-ribbon">
-          {this.state.listingsShown.map(listing => (
-            <Listing key={listing.id} info={listing} />
-          ))}
+          {this.state.listingsShown.map(listing => this.renderListing(listing))}
         </div>
       </div>
     );
