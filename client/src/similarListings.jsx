@@ -17,7 +17,7 @@ class SimilarListings extends React.Component {
         <h1>Similar Listings</h1>
         <div className="similar-listings-ribbon">
           {this.state.listingsShown.map(listing => (
-            <div>this represents a single listing</div>
+            <Listing key={listing.id} info={listing} />
           ))}
         </div>
       </div>
