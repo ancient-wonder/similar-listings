@@ -34,6 +34,7 @@
     "enzyme-adapter-react-16": "^1.1.1",
     "eslint": "^4.18.1",
     "eslint-config-hackreactor": "github:reactorcore/eslint-config-hackreactor",
+    "extract-text-webpack-plugin": "^4.0.0-alpha.0",
     "faker": "^4.1.0",
     "jest": "^22.4.2",
     "jest-enzyme": "^4.2.0",

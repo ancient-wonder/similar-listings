@@ -1,5 +1,6 @@
 const webpack = require('webpack');
 const path = require('path');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // Build directory is where the bundle file will be placed
 const BUILD_DIR = path.resolve(__dirname, 'client/dist');
@@ -16,11 +17,18 @@ const config = {
         use: ['babel-loader'],
       },
       {
-        test:/\.(s*)css$/,
-        use:['style-loader','css-loader', 'sass-loader'],
-      }
+        test: /\.(s*)css$/,
+        use: ExtractTextPlugin.extract({ 
+          fallback: 'style-loader',
+          use: ['css-loader', 'sass-loader'],
+          publicPath: BUILD_DIR,
+        }),
+      },
     ],
   },
+  plugins: [
+    new ExtractTextPlugin({filename: 'bundle.css'}),
+  ],
   resolve: {
     extensions: ['*', '.js', '.jsx'],
   },
