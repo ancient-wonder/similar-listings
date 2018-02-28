@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import './styles/details.scss';
 
 const Details = ({type, numBeds, title, price, numRatings, avgStars}) => (
   <div className="similar-listing-details">
@@ -21,7 +20,7 @@ const Details = ({type, numBeds, title, price, numRatings, avgStars}) => (
       <span className="num-ratings">{numRatings}</span>
     </div>
   </div>
-)
+);
 
 Details.propTypes = {
   type: PropTypes.string.isRequired,
