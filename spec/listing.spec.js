@@ -33,9 +33,9 @@ describe('Listing', () => {
 
   test('renders one <img> element', () => {
     expect(shallowWrapper.find('img').length).toBe(1);
-  })
+  });
 
   test('renders one Details component', () => {
     expect(shallowWrapper.find(Details).length).toBe(1);
-  })
-})
+  });
+});
