@@ -8,7 +8,7 @@
     "node": ">=6.13.0"
   },
   "scripts": {
-    "seed": "node db/seed.js",
+    "seedDb": "node db/seed.js",
     "test": "jest spec",
     "test:watch": "jest spec --watchAll",
     "start": "node server/index.js",
