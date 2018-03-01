@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Details from './details';
+import './styles/listing.scss';
 
 const Listing = ({id, url, thumbnailImage, additionalDetails}) => {
 
