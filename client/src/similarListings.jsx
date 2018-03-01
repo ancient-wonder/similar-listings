@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import Listing from './listing';
+import './styles/similarListings.scss';
 
 class SimilarListings extends React.Component {
   constructor(props) {

@@ -20,3 +20,8 @@ $primary-color: #484848;
 body {
   font-family: $font-stack;
 }
+
+#app {
+  display: flex;
+  justify-content: center;
+}
