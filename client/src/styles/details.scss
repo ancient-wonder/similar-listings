@@ -1,0 +1,25 @@
+.similar-listing-details {
+  padding-top: 8px;
+
+  .accommodations * {
+    line-height: 16px;
+    max-height: 16px;
+    text-transform: uppercase;
+    color: rgb(20, 39, 94);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+  }
+
+  .listing-title {
+    margin-top: 2px;
+    line-height: 22px;
+    max-height: 44px;
+    text-overflow: ellipsis;
+    font-size: 19px;
+    font-weight: 700;
+    letter-spacing: 0.2px;
+    word-wrap: break-word;
+    color: #484848;
+  }
+}

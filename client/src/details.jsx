@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import './styles/details.scss';
 
 const Details = ({type, numBeds, title, price, numRatings, avgStars}) => (
   <div className="similar-listing-details">
