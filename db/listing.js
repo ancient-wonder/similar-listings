@@ -1,4 +1,9 @@
 const mongoose = require('mongoose');
+Promise = require('bluebird');
+mongoose.Promise = Promise;
+
+mongoose.connect('mongodb://localhost/seabnb');
+var db = mongoose.connection;
 
 const similarListingSchema = mongoose.Schema({
   id: Number,
@@ -22,4 +27,14 @@ const listingSchema = mongoose.Schema({
 
 const ListingModel = mongoose.model('Listing', listingSchema);
 
-module.exports = ListingModel;
+async function getSimilarListings(listingId, callback) {
+  try {
+    const [{ similarListings }] = await ListingModel.find({ id: listingId });
+    callback(null, similarListings);
+  } catch(error) {
+    callback(error);
+  }
+}
+
+module.exports.ListingModel = ListingModel;
+module.exports.getSimilarListings = Promise.promisify(getSimilarListings);

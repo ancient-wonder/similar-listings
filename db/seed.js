@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-const ListingModel = require('./listing');
+const ListingModel = require('./listing').ListingModel;
 const data = require('./mock-data');
 
 mongoose.connect('mongodb://localhost/seabnb');
