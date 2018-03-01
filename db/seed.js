@@ -1,14 +1,21 @@
-const mongoose = require('mongoose');
-mongoose.Promise = require('bluebird');
-const ListingModel = require('./listing');
-const data = require('./mock-data');
+const { listings, db } = require('./listing');
+const mockData = require('./mock-data');
 
-mongoose.connect('mongodb://localhost/seabnb');
-var db = mongoose.connection;
+async function seedDb(data) {
+  try {
+    const results = await listings.insertManyAsync(data);
+    console.log(
+      'done seeding database:\n',
+      `inserted ${results.length} records`
+    );
+    db.close();
+  } catch(error) {
+    console.log(
+      'error seeding database\n',
+      error
+    );
+    db.close();
+  }
+}
 
-db.on('error', error => console.log('connection error:', error));
-db.once('open', () => {
-  ListingModel.insertMany(data)
-    .then(results => console.log('done seeding database'))
-    .catch(error => console.error(error));
-});
+seedDb(mockData);

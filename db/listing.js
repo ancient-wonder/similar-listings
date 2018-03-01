@@ -1,4 +1,9 @@
 const mongoose = require('mongoose');
+Promise = require('bluebird');
+mongoose.Promise = Promise;
+
+mongoose.connect('mongodb://localhost/seabnb');
+const db = mongoose.connection;
 
 const similarListingSchema = mongoose.Schema({
   id: Number,
@@ -22,4 +27,28 @@ const listingSchema = mongoose.Schema({
 
 const ListingModel = mongoose.model('Listing', listingSchema);
 
-module.exports = ListingModel;
+const helpers = Promise.promisifyAll({
+  getSimilarListings: async function(listingId, callback) {
+    try {
+      const [{ similarListings }] = await ListingModel.find({ id: listingId });
+      callback(null, similarListings);
+    } catch(error) {
+      callback(error);
+    }
+  },
+  
+  insertMany: async function(data, callback) {
+    try {
+      const results = await ListingModel.insertMany(data);
+      callback(null, results);
+    } catch(error) {
+      callback(error);
+    }
+  },
+});
+
+
+module.exports = {
+  listings: helpers,
+  db: db,
+}
