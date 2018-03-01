@@ -1,0 +1,22 @@
+@import 'reset';
+
+$font-stack: Circular, -apple-system, BlinkMacSystemFont, Roboto, Helvetica Neue, sans-serif;
+$primary-color: #484848;
+
+// All box sizing to border-box
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+// Set root font size for rem sizing
+// :root {
+//   font-size: 10px;
+// }
+
+body {
+  font-family: $font-stack;
+}

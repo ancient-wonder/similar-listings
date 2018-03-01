@@ -20,7 +20,7 @@ const Details = ({type, numBeds, title, price, numRatings, avgStars}) => (
       <span className="num-ratings">{numRatings}</span>
     </div>
   </div>
-)
+);
 
 Details.propTypes = {
   type: PropTypes.string.isRequired,
