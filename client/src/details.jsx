@@ -12,13 +12,13 @@ const Details = ({type, numBeds, title, price, numRatings, avgStars}) => (
     <div className="listing-title">
       {title}
     </div>
-    <div className="listing-price">
-      {price}
+    <div className="row-price">
+      <span className="price">${price}</span><span className="per-night">per night</span>
     </div>
     <div className="ratings">
-      <span className="avg-stars">{avgStars}</span>
-      <span>&nbsp;&nbsp;</span>
-      <span className="num-ratings">{numRatings}</span>
+      <span className="avg-stars">{avgStars} stars</span>
+      <span> &#183; </span>
+      <span className="num-ratings">{numRatings} reviews</span>
     </div>
   </div>
 );
