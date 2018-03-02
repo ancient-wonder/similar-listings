@@ -5,6 +5,8 @@ const {listings, db} = require ('../db/listing');
 const app = express();
 
 app.use(express.static('client'));
+app.use('/listings/:id', express.static('client'));
+
 app.use(bodyParser.json());
 
 app.get('/listings/:id/similar_listings', async function({params: {id}}, res) {
