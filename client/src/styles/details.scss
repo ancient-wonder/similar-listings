@@ -12,11 +12,8 @@
   }
 
   .listing-title {
-    display: flex;
-    align-content: space-around;
-    height: 44px;
-    
     margin-top: 2px;
+    padding-bottom: 2px;
     line-height: 22px;
     max-height: 44px;
     text-overflow: ellipsis;
