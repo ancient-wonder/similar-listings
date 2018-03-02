@@ -1,0 +1,22 @@
+.similar-listings {
+  margin-top: 40px;
+
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    margin-bottom: 24px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+    letter-spacing: -0.6px;
+    padding: 2px 0;
+  }
+
+  .similar-listings-ribbon {
+    display: flex;
+    margin: 0px -8px;
+  }
+}
+
+
