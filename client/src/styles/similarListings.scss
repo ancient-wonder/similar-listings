@@ -14,8 +14,7 @@
   }
 
   .similar-listings-ribbon {
-    display: grid;
-    grid-template: 1fr / repeat(3, 1fr);
+    display: flex;
     margin: 0px -8px;
   }
 }
