@@ -1,6 +1,7 @@
+const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
-const {listings, db} = require ('../db/listing');
+const listings = require ('../db/listing');
 
 const app = express();
 
@@ -19,4 +20,6 @@ app.get('/listings/:id/similar_listings', async function({params: {id}}, res) {
   }
 });
 
+mongoose.connect('mongodb://localhost/seabnb');
 app.listen(3004, () => console.log('listening on localhost:3004'));
+

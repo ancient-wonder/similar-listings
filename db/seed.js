@@ -1,5 +1,9 @@
-const { listings, db } = require('./listing');
+const mongoose = require('mongoose');
+const listings = require('./listing');
 const mockData = require('./mock-data');
+
+mongoose.connect('mongodb://localhost/seabnb');
+const db = mongoose.connection;
 
 async function seedDb(data) {
   try {
