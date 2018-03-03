@@ -45,7 +45,6 @@ describe('DB: Listing model', () => {
   afterAll(async function() {
     try {
       await db.dropCollection('listings');
-      console.log('dropped listings collection');
       db.close();
     } catch(error) {
       console.error('error while dropping database', error);
