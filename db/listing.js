@@ -1,9 +1,6 @@
 const mongoose = require('mongoose');
-Promise = require('bluebird');
+const Promise = require('bluebird');
 mongoose.Promise = Promise;
-
-mongoose.connect('mongodb://localhost/seabnb');
-const db = mongoose.connection;
 
 const similarListingSchema = mongoose.Schema({
   id: Number,
@@ -47,8 +44,4 @@ const helpers = Promise.promisifyAll({
   },
 });
 
-
-module.exports = {
-  listings: helpers,
-  db: db,
-}
+module.exports = helpers;

@@ -12,7 +12,7 @@ const Details = ({type, numBeds, title, price, numRatings, avgStars}) => (
     <div className="listing-title">
       {title}
     </div>
-    <div className="row-price">
+    <div className="listing-price">
       <span className="price">${price}</span><span className="per-night">per night</span>
     </div>
     <div className="ratings">

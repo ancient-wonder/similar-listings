@@ -10,6 +10,7 @@
   "scripts": {
     "seedDb": "node db/seed.js",
     "test": "jest spec",
+    "test:coverage": "jest spec --coverage",
     "test:watch": "jest spec --watchAll",
     "start": "node server/index.js",
     "start:watch": "nodemon server/index.js",
@@ -58,6 +59,11 @@
     "setupTestFrameworkScriptFile": "./node_modules/jest-enzyme/lib/index.js",
     "setupFiles": [
       "./spec/enzymeSetup.js"
-    ]
+    ],
+    "moduleNameMapper": {
+      "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$":
+        "<rootDir>/__mocks__/fileMock.js",
+      "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js"
+    }
   }
 }
