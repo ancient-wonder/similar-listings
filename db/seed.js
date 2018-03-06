@@ -7,16 +7,16 @@ const db = mongoose.connection;
 
 async function seedDb(data) {
   try {
-    const results = await listings.insertManyAsync(data);
+    const results = await listings.insertMany(data);
     console.log(
       'done seeding database:\n',
-      `inserted ${results.length} records`
+      `inserted ${results.length} records`,
     );
     db.close();
-  } catch(error) {
+  } catch (error) {
     console.log(
       'error seeding database\n',
-      error
+      error,
     );
     db.close();
   }
