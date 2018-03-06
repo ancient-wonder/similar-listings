@@ -23,26 +23,32 @@ const listingSchema = mongoose.Schema({
   similarListings: [similarListingSchema],
 });
 
-const ListingModel = mongoose.model('Listing', listingSchema);
-
-const helpers = Promise.promisifyAll({
-  getSimilarListings: async (listingId, callback) => {
+listingSchema.statics.getSimilarListingsAsync = Promise.promisify(
+  async function getSimilarListings(listingId, callback) {
     try {
-      const [{ similarListings }] = await ListingModel.find({ id: listingId });
+      const [{ similarListings }] = await this.find({ id: listingId });
       callback(null, similarListings);
     } catch (error) {
       callback(error);
     }
   },
+);
 
-  insertMany: async (data, callback) => {
-    try {
-      const results = await ListingModel.insertMany(data);
-      callback(null, results);
-    } catch (error) {
-      callback(error);
-    }
-  },
-});
+  // insertMany: async (data, callback) => {
+  //   try {
+  //     const results = await ListingModel.insertMany(data);
+  //     callback(null, results);
+  //   } catch (error) {
+  //     callback(error);
+  //   }
+  // },
+// });
 
-module.exports = helpers;
+console.log('listingSchema.statics', listingSchema.statics);
+
+const ListingModel = mongoose.model('Listing', listingSchema);
+
+console.log('ListingModel.getSimilarListings', ListingModel.getSimilarListings);
+console.log('ListingModel.getSimilarListingsAsync', ListingModel.getSimilarListingsAsync);
+
+module.exports = ListingModel;

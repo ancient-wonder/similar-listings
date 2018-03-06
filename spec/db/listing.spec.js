@@ -5,6 +5,7 @@ import listings from '../../db/listing';
 
 mongoose.Promise = Promise;
 
+
 describe('DB: Listing model', () => {
   let db;
 
@@ -19,7 +20,7 @@ describe('DB: Listing model', () => {
   });
 
   it('should insert and retrieve multiple items', async () => {
-    await listings.insertManyAsync(testItems);
+    await listings.insertMany(testItems);
     const expected = [];
     const actual = [];
 
