@@ -14,8 +14,8 @@
     "test:watch": "jest spec --watchAll",
     "start": "node server/index.js",
     "start:watch": "nodemon server/index.js",
-    "compile": "webpack --debug --devtool inline-source-map --output-pathinfo --mode development",
-    "compile:watch": "webpack --debug --devtool inline-source-map --output-pathinfo --watch --mode development"
+    "build": "webpack --debug --devtool inline-source-map --output-pathinfo --mode development",
+    "build:watch": "webpack --debug --devtool inline-source-map --output-pathinfo --watch --mode development"
   },
   "dependencies": {
     "axios": "^0.18.0",
