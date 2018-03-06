@@ -34,21 +34,6 @@ listingSchema.statics.getSimilarListingsAsync = Promise.promisify(
   },
 );
 
-  // insertMany: async (data, callback) => {
-  //   try {
-  //     const results = await ListingModel.insertMany(data);
-  //     callback(null, results);
-  //   } catch (error) {
-  //     callback(error);
-  //   }
-  // },
-// });
-
-console.log('listingSchema.statics', listingSchema.statics);
-
 const ListingModel = mongoose.model('Listing', listingSchema);
-
-console.log('ListingModel.getSimilarListings', ListingModel.getSimilarListings);
-console.log('ListingModel.getSimilarListingsAsync', ListingModel.getSimilarListingsAsync);
 
 module.exports = ListingModel;
