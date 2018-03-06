@@ -1,46 +1,28 @@
-import mongoose from 'mongoose';
-import Promise from 'bluebird';
-import testItems from './testData';
 import listings from '../../db/listing';
 
-mongoose.Promise = Promise;
+describe('DB: getSimilarListingsAsync()', () => {
+  const originals = { listings: {} };
+  originals.listings.find = listings.find;
+  listings.find = jest.fn(() => [{ similarListings: 'foo' }]);
 
-
-describe('DB: Listing model', () => {
-  let db;
-
-  beforeAll(() => {
-    mongoose.connect('mongodb://localhost/testdb');
-    db = mongoose.connection;
-
-    const dbName = db.name;
-    if (dbName !== 'testdb') {
-      throw new Error('connected to wrong database');
-    }
+  afterEach(() => {
+    listings.find.mockClear();
   });
 
-  it('should insert and retrieve multiple items', async () => {
-    await listings.insertMany(testItems);
-    const expected = [];
-    const actual = [];
-
-    await testItems.forEach(async (item) => {
-      const { id } = item;
-      const retrieved = await listings.getSimilarListingsAsync(id);
-
-      expected.push(testItems[id].similarListings.map(listing => listing.id));
-      actual.push(retrieved.map(listing => listing.id));
-    });
-
-    expect(expected).toEqual(actual);
+  afterAll(() => {
+    listings.find = originals.listings.find;
   });
 
-  afterAll(async () => {
-    try {
-      await db.dropCollection('listings');
-      db.close();
-    } catch (error) {
-      console.error('error while dropping database', error);
-    }
+  it('should call .find()', async () => {
+    await listings.getSimilarListingsAsync(2);
+    expect(listings.find).toHaveBeenCalled();
+  });
+
+  it('should filter by the correct id', async () => {
+    await listings.getSimilarListingsAsync(2);
+    const expectedArgs = [{ id: 2 }];
+    const expectedCalls = [expectedArgs];
+
+    expect(listings.find.mock.calls).toEqual(expectedCalls);
   });
 });
