@@ -3,12 +3,13 @@ const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 // Build directory is where the bundle file will be placed
-const BUILD_DIR = path.resolve(__dirname, 'client/dist');
+const BUILD_DIR = path.resolve(__dirname, 'public/dist');
 // App directory is where raw JSX files will be placed
 const APP_DIR = path.resolve(__dirname, 'client/src');
 
 const config = {
-  entry: APP_DIR + '/index.jsx',
+  context: APP_DIR,
+  entry: './index.jsx',
   module: {
     rules: [
       {
@@ -27,7 +28,7 @@ const config = {
     ],
   },
   plugins: [
-    new ExtractTextPlugin({filename: 'bundle.css'}),
+    new ExtractTextPlugin({ filename: 'bundle.css' }),
   ],
   resolve: {
     extensions: ['*', '.js', '.jsx'],
