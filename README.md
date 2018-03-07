@@ -36,5 +36,6 @@ From within the root directory:
 
 ### Viewing the module
 
-1. From within the root directory, start the server: `npm start`  
-2. From your browser, open the module: `http://localhost:3003`
+1. If MongoDB daemon is not currently running, run it: `mongod` (may need to be run as `sudo mongod` depending on your settings)
+2. From within the root directory, start the server: `npm start`  
+3. From your browser, open the module: `http://localhost:3003`
