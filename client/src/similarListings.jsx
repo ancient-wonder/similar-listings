@@ -1,5 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Promise from 'bluebird';
+import axios from 'axios';
 import Listing from './listing';
 import './styles/similarListings.scss';
 
@@ -7,12 +9,39 @@ class SimilarListings extends React.Component {
   constructor(props) {
     super(props);
 
+    this.statics = {
+      id: props.id,
+    };
+
     this.state = {
-      listingsShown: props.listings.slice(0, 3), // MVP: only show 3 listings
+      listings: [],
+      listingsShown: [],
     };
   }
 
-  renderListing({id, url, thumbnailImage, title, type, numBeds, price, numRatings, avgStars}) {
+  componentDidMount() {
+    this.getListings()
+      .then(() => this.setListings());
+  }
+
+  getListings() {
+    const url = `/listings/${this.statics.id}/similar_listings`;
+    return new Promise((resolve, reject) => {
+      axios.get(url)
+        .then(({ data }) => this.setState({ listings: data }))
+        .then(() => resolve())
+        .catch((error) => {
+          reject(error);
+        });
+    });
+  }
+
+  setListings() {
+    this.setState({ listingsShown: this.state.listings.slice(0, 3) });
+  }
+
+  renderListing({ id, url, thumbnailImage, title, type, numBeds, price, numRatings, avgStars }) {
+    this.blah = 'blah';
     const additionalDetails = {
       title,
       type,
@@ -20,9 +49,9 @@ class SimilarListings extends React.Component {
       price,
       numRatings,
       avgStars,
-      thumbnailImage
+      thumbnailImage,
     };
-    
+
     return (
       <Listing
         key={id}
@@ -47,7 +76,7 @@ class SimilarListings extends React.Component {
 }
 
 SimilarListings.propTypes = {
-  listings: PropTypes.array.isRequired,
+  id: PropTypes.number.isRequired,
 };
 
 export default SimilarListings;
