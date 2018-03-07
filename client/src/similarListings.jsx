@@ -5,6 +5,9 @@ import axios from 'axios';
 import Listing from './listing';
 import './styles/similarListings.scss';
 
+const HOST = process.env.HOST;
+const PORT = process.env.PORT;
+
 class SimilarListings extends React.Component {
   constructor(props) {
     super(props);
@@ -25,7 +28,7 @@ class SimilarListings extends React.Component {
   }
 
   getListings() {
-    const url = `/listings/${this.statics.id}/similar_listings`;
+    const url = `http://${HOST}:${PORT}/listings/${this.statics.id}/similar_listings`;
     return new Promise((resolve, reject) => {
       axios.get(url)
         .then(({ data }) => this.setState({ listings: data }))

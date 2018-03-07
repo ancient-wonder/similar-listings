@@ -1,6 +1,7 @@
 const webpack = require('webpack');
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const Dotenv = require('dotenv-webpack');
 
 // Build directory is where the bundle file will be placed
 const BUILD_DIR = path.resolve(__dirname, 'public/dist');
@@ -29,6 +30,7 @@ const config = {
   },
   plugins: [
     new ExtractTextPlugin({ filename: 'bundle.css' }),
+    new Dotenv(),
   ],
   resolve: {
     extensions: ['*', '.js', '.jsx'],
