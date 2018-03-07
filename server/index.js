@@ -1,13 +1,17 @@
 const mongoose = require('mongoose');
 const express = require('express');
+const morgan = require('morgan');
+const path = require('path');
 const bodyParser = require('body-parser');
 const listings = require('../db/listing');
 
 const app = express();
 
-app.use('/listings/:id', express.static('public'));
-app.use(express.static('public'));
+const PUBLIC_DIR = path.join(__dirname, '../public');
 
+app.use(morgan('dev'));
+app.use('/listings/:id', express.static(PUBLIC_DIR));
+app.use(express.static(PUBLIC_DIR));
 app.use(bodyParser.json());
 
 app.get('/listings/:id/similar_listings', async ({ params: { id } }, res) => {
