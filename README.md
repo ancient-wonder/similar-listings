@@ -1,13 +1,13 @@
-# Project Name
+# Seabnb: Similar Listings Module
 
-> Project description
+> This is a module built with Reactjs that displays recommended listings similar to the current listing being viewed on a page.
 
 ## Related Projects
 
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
-  - https://github.com/teamName/repo
+  - https://github.com/SeaBNB/reviews
+  - https://github.com/SeaBNB/Bookings
+  - https://github.com/SeaBNB/amenities
+  - https://github.com/SeaBNB/moriah-proxy
 
 ## Table of Contents
 
@@ -17,23 +17,24 @@
 
 ## Usage
 
-> Some usage instructions
+> Navigating to root url in browser (`http://localhost:3003/`) will display similar listings based on a random valid id number.  
+
+> You can alternatively navigate to `http://localhost:3003/listings/:id`, where id is an integer between 0 and 199 (inclusive). This will show the specific recommendations associated with that listing id.
 
 ## Requirements
 
-An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm).
-
-- Node 6.13.0
-- etc
+- Node ^9.5.0 (An `nvmrc` file is included if using [nvm](https://github.com/creationix/nvm))
 
 ## Development
 
-### Installing Dependencies
+### Setup
 
 From within the root directory:
 
-```sh
-npm install -g webpack
-npm install
-```
+1. Install dependencies: `npm install`
+2. Build project: `npm run build`
 
+### Viewing the module
+
+1. From within the root directory, start the server: `npm start`  
+2. From your browser, open the module: `http://localhost:3003`
