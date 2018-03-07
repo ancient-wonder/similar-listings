@@ -5,8 +5,8 @@ const listings = require('../db/listing');
 
 const app = express();
 
-app.use(express.static('client'));
-app.use('/listings/:id', express.static('client'));
+app.use('/listings/:id', express.static('public'));
+app.use(express.static('public'));
 
 app.use(bodyParser.json());
 
@@ -22,4 +22,3 @@ app.get('/listings/:id/similar_listings', async ({ params: { id } }, res) => {
 
 mongoose.connect('mongodb://localhost/seabnb');
 app.listen(3003, () => console.log('listening on localhost:3003'));
-
