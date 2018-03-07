@@ -25,3 +25,5 @@ build/
 dist/
 public/dist/
 
+#environment variables
+.env
