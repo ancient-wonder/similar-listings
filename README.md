@@ -31,8 +31,9 @@
 
 From within the root directory:
 
-1. Install dependencies: `npm install`
-2. Build project: `npm run build`
+1. Install dependencies: `npm install`  
+2. Build project: `npm run build`  
+3. Seed database: `npm run db:seed`  
 
 ### Viewing the module
 
