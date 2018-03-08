@@ -33,10 +33,11 @@ From within the root directory:
 
 1. Install dependencies: `npm install`  
 2. Build project: `npm run build`  
+3. In a separate terminal window, Run mongoDB daemon: `mongod`  
 3. Seed database: `npm run db:seed`  
 
 ### Viewing the module
 
-1. If MongoDB daemon is not currently running, run it: `mongod` (may need to be run as `sudo mongod` depending on your settings)
+1. If mongod is not currently running, run it: `mongod`
 2. From within the root directory, start the server: `npm start`  
 3. From your browser, open the module: `http://localhost:3003`
