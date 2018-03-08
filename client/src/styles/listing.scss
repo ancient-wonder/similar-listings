@@ -5,4 +5,10 @@
   img {
     border-radius: 3px;
   }
+
+  a,
+  a *,
+  a:hover, {
+    text-decoration: none;
+  }
 }

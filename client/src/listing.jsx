@@ -16,15 +16,19 @@ const Listing = ({id, url, thumbnailImage, additionalDetails}) => {
 
   return (
     <div className="similar-listing">
-      <img src={thumbnailImage} />
-      <Details
-        type={type}
-        numBeds={numBeds}
-        title={title}
-        price={price}
-        numRatings={numRatings}
-        avgStars={avgStars}
-      />
+      <a href={`/listings/${id}`}>
+        <img src={thumbnailImage} />
+      </a>
+      <a href={`/listings/${id}`}>
+        <Details
+          type={type}
+          numBeds={numBeds}
+          title={title}
+          price={price}
+          numRatings={numRatings}
+          avgStars={avgStars}
+        />
+      </a>
     </div>
   );
 };

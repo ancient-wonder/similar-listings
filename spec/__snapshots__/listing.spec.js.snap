@@ -4,16 +4,24 @@ exports[`Listing renders correctly 1`] = `
 <div
   className="similar-listing"
 >
-  <img
-    src="mockImageUrl"
-  />
-  <Details
-    avgStars={0.5}
-    numBeds={2}
-    numRatings={965}
-    price={810}
-    title="nostrum laboriosam in rerum officiis"
-    type="Shared Room"
-  />
+  <a
+    href="/listings/199"
+  >
+    <img
+      src="mockImageUrl"
+    />
+  </a>
+  <a
+    href="/listings/199"
+  >
+    <Details
+      avgStars={0.5}
+      numBeds={2}
+      numRatings={965}
+      price={810}
+      title="nostrum laboriosam in rerum officiis"
+      type="Shared Room"
+    />
+  </a>
 </div>
 `;
