@@ -31,13 +31,29 @@
 
 From within the root directory:
 
-1. Install dependencies: `npm install`  
-2. Build project: `npm run build`  
-3. In a separate terminal window, Run mongoDB daemon: `mongod`  
-3. Seed database: `npm run db:seed`  
+1. Install dependencies  
+   `npm install`  
+2. Add environment variables  
+  Create a `.env` file  in the project's root directory, and add values for `PORT`, `DB_NAME`, `HOST`, and `PROXY_PORT`, and save.  
+    Example:
+    ```
+    PORT=3003
+    DB_NAME=similar_listings
+    HOST=localhost
+    PROXY_PORT=3000
+    ```
+3. Build project  
+   `npm run build`  
+4. In a separate terminal window, Run mongoDB daemon  
+   `mongod`  
+5. Seed database  
+   `npm run db:seed`  
 
 ### Viewing the module
 
-1. If mongod is not currently running, run it: `mongod`
-2. From within the root directory, start the server: `npm start`  
-3. From your browser, open the module: `http://localhost:3003`
+1. If mongod is not currently running, run it:  
+   `mongod`
+2. From within the root directory, start the server:  
+   `npm start`  
+3. From your browser, open the module:  
+   `http://localhost:3003`

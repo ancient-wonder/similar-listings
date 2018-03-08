@@ -1,8 +1,11 @@
 const mongoose = require('mongoose');
 const listings = require('./listing');
 const mockData = require('./mock-data');
+require('dotenv').config();
 
-mongoose.connect('mongodb://localhost/seabnb');
+const DB_NAME = process.env.DB_NAME;
+
+mongoose.connect(`mongodb://localhost/${DB_NAME}`);
 const db = mongoose.connection;
 
 async function seedDb(data) {
