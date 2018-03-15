@@ -9,6 +9,7 @@
   },
   "scripts": {
     "db:seed": "node db/seed.js",
+    "db:seedpostgres": "node db/seedPostgres.js",
     "test": "jest spec",
     "test:coverage": "jest spec --coverage",
     "test:watch": "jest spec --watchAll",
