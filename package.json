@@ -10,6 +10,7 @@
   "scripts": {
     "db:seed": "node db/seed.js",
     "db:seedpostgres": "node db/seedPostgres.js",
+    "db:seedcassandra": "node db/seedCassandra.js",
     "test": "jest spec",
     "test:coverage": "jest spec --coverage",
     "test:watch": "jest spec --watchAll",
@@ -22,6 +23,7 @@
     "axios": "^0.18.0",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
+    "cassandra-driver": "^3.4.1",
     "cors": "^2.8.4",
     "dotenv": "^5.0.1",
     "express": "^4.16.2",
