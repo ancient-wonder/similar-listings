@@ -37,7 +37,7 @@ const getRandomList = (index, dataSize) => {
   return obj;
 };
 
-const getRandomArray = (index, dataSize) => {
+const getRandomArray = (dataSize) => {
   const result = [];
   for (let i = 0; i < 7; i += 1) {
     const num = Math.floor(Math.random() * dataSize);
@@ -51,7 +51,7 @@ const getRandomArray = (index, dataSize) => {
   return result;
 };
 
-const createObj = (id) => {
+const createObj = (id, dataSize) => {
   const obj = {};
   obj.id = id;
   obj.url = `/listings/${id}`;
@@ -65,7 +65,7 @@ const createObj = (id) => {
                   `${settings.thumbnailImage.width}/` +
                   `${settings.thumbnailImage.height}` +
                   `?image=${id}`;
-
+  obj.listings = getRandomArray(dataSize);
   return obj;
 };
 
@@ -77,7 +77,7 @@ const createCassandra = (id, dataSize) => {
   arr.push(getRandomNum(1, 8));
   arr.push(getRandomNum(1, 5, 1));
   arr.push(getRandomNum(50, 1000, 2));
-  arr.push(getRandomArray(id, dataSize));
+  arr.push(getRandomArray(dataSize));
   arr.push('https://picsum.photos/' +
     `${settings.thumbnailImage.width}/` +
     `${settings.thumbnailImage.height}` +
