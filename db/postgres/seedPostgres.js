@@ -4,7 +4,7 @@ const config = require('./dbConfig');
 
 const generateData = require('../generateData');
 
-const dataSize = 5000;
+const dataSize = 10000000;
 
 const db = pgp(config.db);
 const dbt = pgp(config.dbt);
@@ -31,9 +31,9 @@ const insertList = async (start) => {
 const createListTB = () => {
   dbt.any(queries.createTB)
     .then(() => console.log('table list successfully created'))
-    .then(() => {
+    .then(async () => {
       for (let i = 0; i < dataSize; i += 1000) {
-        insertList(i);
+        await insertList(i);
       }
     })
     .then(() => pgp.end())
