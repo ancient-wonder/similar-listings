@@ -1,5 +1,5 @@
 CREATE TABLE list(
-  id INTEGER PRIMARY KEY,
+  id INTEGER,
   url TEXT,
   title TEXT,
   type TEXT,

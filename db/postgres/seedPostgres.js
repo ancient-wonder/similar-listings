@@ -36,6 +36,10 @@ const createListTB = () => {
         await insertList(i);
       }
     })
+    .then(async () => {
+      await dbt.any(queries.createIndex)
+        .catch(error => console.log(error))
+    })
     .then(() => pgp.end())
     .catch(error => console.log(error));
 };
