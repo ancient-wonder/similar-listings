@@ -15,4 +15,5 @@ module.exports = {
   dropDB: sql('./dropDB.sql'),
   createDB: sql('./createDB.sql'),
   createTB: sql('./createTB.sql'),
+  createIndex: sql('./createIndex.sql'),
 };
