@@ -37,7 +37,7 @@ const cassandraSearch = (query) => {
       console.log(`cassandraDB time cost: ${cassandraEndTime - cassandraStartTime} ms`);
     })
     .then(() => {
-      dbc.shutdown();
+      // dbc.shutdown();
     })
     .catch((error) => {
       console.log(error);
@@ -54,9 +54,12 @@ const compareSingleSearch = async () => {
 
 const compareComplexSearch = async () => {
   const postgresQuery = 'select * from list where ' +
-  'numratings>(select numratings from list where id=1)-0.5 and ' +
-  'numratings<(select numratings from list where id=1)+0.5 and ' +
-  'avgstars=(select avgstars from list where id=1) limit 7;';
+  'numratings>(select numratings from list where id=1000)-0.5 and ' +
+  'numratings<(select numratings from list where id=1000)+0.5 and ' +
+  'price>(select price from list where id=1000)-200 and ' +
+  'price<(select price from list where id=1000)+200 and ' +
+  'type=(select type from list where id=1000) and ' +
+  'avgstars=(select avgstars from list where id=1000) limit 7;';
   console.log('Complex query search');
   await postgresSearch(postgresQuery);
   // await cassandraSearch(cassandraQuery);
@@ -65,17 +68,28 @@ const compareComplexSearch = async () => {
 const complexCassandraSearch = async () => {
   let numratings;
   let avgstars;
+  let price;
+  let type;
   cassandraStartTime = new Date().getTime();
-  const cassandraNumQuery = 'SELECT numratings FROM similarlist.list WHERE id=1;';
+  const cassandraNumQuery = 'SELECT numratings FROM similarlist.list WHERE id=1000;';
   await dbc.execute(cassandraNumQuery)
     .then((data) => { numratings = data.rows[0].numratings; });
-  const cassandraAvgQuery = 'SELECT avgstars FROM similarlist.list WHERE id=1;';
+  const cassandraAvgQuery = 'SELECT avgstars FROM similarlist.list WHERE id=1000;';
   await dbc.execute(cassandraAvgQuery)
     .then((data) => { avgstars = data.rows[0].avgstars; });
+  const cassandraPriceQuery = 'SELECT price FROM similarlist.list WHERE id=1000;';
+  await dbc.execute(cassandraPriceQuery)
+    .then((data) => { price = data.rows[0].price; });
+  const cassandraTypeQuery = 'SELECT type FROM similarlist.list WHERE id=1000;';
+  await dbc.execute(cassandraTypeQuery)
+    .then((data) => { type = data.rows[0].type; });
 
   const cassandraQuery = 'select * from similarlist.list where ' +
   `numratings>${numratings - 0.5} and ` +
   `numratings<${numratings + 0.5} and ` +
+  `price>${price - 200} and ` +
+  `price<${price + 200} and ` +
+  // `type=(${type}) and ` +
   `avgstars=${avgstars} limit 7 allow filtering;`;
   await dbc.execute(cassandraQuery)
     .then((data) => {
@@ -84,6 +98,9 @@ const complexCassandraSearch = async () => {
     })
     .then(() => {
       dbc.shutdown();
+    })
+    .catch((error) => {
+      console.log(error);
     });
 };
 
