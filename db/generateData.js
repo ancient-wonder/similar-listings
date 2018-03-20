@@ -64,8 +64,8 @@ const createObj = (id, dataSize) => {
   obj.thumbnailimage = 'https://picsum.photos/' +
                   `${settings.thumbnailImage.width}/` +
                   `${settings.thumbnailImage.height}` +
-                  `?image=${id}`;
-  obj.listings = getRandomArray(dataSize);
+                  `?image=${getRandomNum(0, 999)}`;
+  // obj.listings = getRandomArray(dataSize);
   return obj;
 };
 
