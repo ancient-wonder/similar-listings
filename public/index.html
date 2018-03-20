@@ -22,8 +22,9 @@
         return null;
       };
 
-      const listingId = getListingId(window.location.pathname) ||
-                  Math.floor(Math.random() * 200);
+      // const listingId = getListingId(window.location.pathname) ||
+      //             Math.floor(Math.random() * 200);
+      const listingId = parseInt(window.location.pathname.slice(10, window.location.pathname.length - 1));
       console.log('listing id shown:', listingId);
 
       ReactDOM.render(

@@ -8,10 +8,10 @@ const Listing = ({id, url, thumbnailImage, additionalDetails}) => {
   const {
     title,
     type,
-    numBeds,
+    numbeds,
     price,
-    numRatings,
-    avgStars,
+    numratings,
+    avgstars,
   } = additionalDetails;
 
   return (
@@ -22,11 +22,11 @@ const Listing = ({id, url, thumbnailImage, additionalDetails}) => {
       <a href={`/listings/${id}`}>
         <Details
           type={type}
-          numBeds={numBeds}
+          numBeds={numbeds}
           title={title}
           price={price}
-          numRatings={numRatings}
-          avgStars={avgStars}
+          numRatings={numratings}
+          avgStars={avgstars}
         />
       </a>
     </div>

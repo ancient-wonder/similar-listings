@@ -43,16 +43,16 @@ class SimilarListings extends React.Component {
     this.setState({ listingsShown: this.state.listings.slice(0, 3) });
   }
 
-  renderListing({ id, url, thumbnailImage, title, type, numBeds, price, numRatings, avgStars }) {
+  renderListing({ id, url, thumbnailimage, title, type, numbeds, price, numratings, avgstars }) {
     this.blah = 'blah';
     const additionalDetails = {
       title,
       type,
-      numBeds,
+      numbeds,
       price,
-      numRatings,
-      avgStars,
-      thumbnailImage,
+      numratings,
+      avgstars,
+      thumbnailimage,
     };
 
     return (
@@ -60,7 +60,7 @@ class SimilarListings extends React.Component {
         key={id}
         id={id}
         url={url}
-        thumbnailImage={thumbnailImage}
+        thumbnailImage={thumbnailimage}
         additionalDetails={additionalDetails}
       />
     );
