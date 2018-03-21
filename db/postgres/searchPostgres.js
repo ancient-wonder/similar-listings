@@ -11,7 +11,7 @@ const searchListings = (id) => {
   `price<(select price from list where id=${id})+200 and ` +
   `type=(select type from list where id=${id}) and ` +
   `avgstars=(select avgstars from list where id=${id}) limit 7;`;
-  console.log('Complex query search');
+  // console.log('Complex query search');
 
   return db.any(query)
     .then((data) => {

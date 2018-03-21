@@ -1,3 +1,4 @@
+const newrelic = require('newrelic');
 const mongoose = require('mongoose');
 const express = require('express');
 const morgan = require('morgan');
