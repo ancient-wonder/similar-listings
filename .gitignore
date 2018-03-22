@@ -27,3 +27,5 @@ public/dist/
 
 #environment variables
 .env
+
+newrelic.js
