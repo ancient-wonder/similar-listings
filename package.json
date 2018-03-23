@@ -39,6 +39,7 @@
     "redis": "^2.8.0"
   },
   "devDependencies": {
+    "artillery": "^1.6.0-14",
     "babel-core": "^6.26.0",
     "babel-jest": "^22.4.1",
     "babel-loader": "^7.1.3",
