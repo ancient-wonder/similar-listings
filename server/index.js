@@ -6,7 +6,7 @@ const path = require('path');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 require('dotenv').config();
-const listings = require('../db/listing');
+// const listings = require('../db/listing');
 const searchPostgres = require('../db/postgres/searchPostgres');
 
 const redis = require('redis');
@@ -42,9 +42,8 @@ app.use('/listings/:id', express.static(PUBLIC_DIR));
 app.use(express.static(PUBLIC_DIR));
 app.use(bodyParser.json());
 
-app.get('/listings/:id/similar_listings', cache, async (req, res) => {
-  // console.log('request');
-  // console.log(req.params.id);
+// app.get('/listings/:id/similar_listings', cache, async (req, res) => {
+app.get('/listings/:id/similar_listings', async (req, res) => {
   try {
     const similarlistings = await searchPostgres.searchListings(req.params.id);
     client.setex(req.params.id, 300, JSON.stringify(similarlistings));
