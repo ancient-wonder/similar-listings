@@ -16,8 +16,8 @@
     "test:watch": "jest spec --watchAll",
     "start": "node server/index.js",
     "start:watch": "nodemon server/index.js",
-    "build": "webpack --debug --devtool inline-source-map --output-pathinfo --mode development",
-    "build:watch": "webpack --debug --devtool inline-source-map --output-pathinfo --watch --mode development"
+    "build": "webpack --debug --devtool inline-source-map --optimize-minimize --output-pathinfo --mode development",
+    "build:watch": "webpack --debug --devtool inline-source-map --optimize-minimize --output-pathinfo --watch --mode development"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -45,6 +45,7 @@
     "babel-loader": "^7.1.3",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.24.1",
+    "compression-webpack-plugin": "^1.1.11",
     "css-loader": "^0.28.10",
     "dotenv-webpack": "^1.5.5",
     "enzyme": "^3.3.0",

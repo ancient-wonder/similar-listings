@@ -42,8 +42,14 @@ app.use('/listings/:id', express.static(PUBLIC_DIR));
 app.use(express.static(PUBLIC_DIR));
 app.use(bodyParser.json());
 
-// app.get('/listings/:id/similar_listings', cache, async (req, res) => {
-app.get('/listings/:id/similar_listings', async (req, res) => {
+app.get('*.js', (req, res, next) => {
+  req.url = req.url + '.gz';
+  res.set('Content-Encoding', 'gzip');
+  next();
+});
+
+app.get('/listings/:id/similar_listings', cache, async (req, res) => {
+// app.get('/listings/:id/similar_listings', async (req, res) => {
   try {
     const similarlistings = await searchPostgres.searchListings(req.params.id);
     client.setex(req.params.id, 300, JSON.stringify(similarlistings));
