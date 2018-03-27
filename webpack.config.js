@@ -9,26 +9,8 @@ const BUILD_DIR = path.resolve(__dirname, 'public/dist');
 // App directory is where raw JSX files will be placed
 const APP_DIR = path.resolve(__dirname, 'client/src');
 
-const config = {
-  context: APP_DIR,
-  entry: './index.jsx',
-  module: {
-    rules: [
-      {
-        test: /\.(js|jsx)$/,
-        include: APP_DIR,
-        use: ['babel-loader'],
-      },
-      {
-        test: /\.(s*)css$/,
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: ['css-loader', 'sass-loader'],
-          publicPath: BUILD_DIR,
-        }),
-      },
-    ],
-  },
+const common = {
+  context: path.resolve(__dirname, 'client/src'),
   plugins: [
     new webpack.DefinePlugin({ // <-- key to reducing React's size
       'process.env': {
@@ -38,21 +20,70 @@ const config = {
     new webpack.optimize.AggressiveMergingPlugin(), // Merge chunks
     new ExtractTextPlugin({ filename: 'bundle.css' }),
     new Dotenv(),
-    new CompressionPlugin({
-      asset: "[path].gz[query]",
-      algorithm: "gzip",
-      test: /\.js$|\.css$|\.html$/,
-      threshold: 10240,
-      minRatio: 0.8
-    }),
   ],
   resolve: {
     extensions: ['*', '.js', '.jsx'],
-  },
-  output: {
-    path: BUILD_DIR,
-    filename: 'bundle.js',
+    alias: {
+      'pg-native': path.join(__dirname, 'aliases/pg-native.js'),
+    },
   },
 };
 
-module.exports = config;
+const client = {
+  entry: './index.jsx',
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        include: APP_DIR,
+        use: ['babel-loader'],
+      },
+      {
+        test: /\.scss$$/,
+        use: [{
+          loader: 'style-loader', // creates style nodes from JS strings
+        }, {
+          loader: 'css-loader', // translates CSS into CommonJS
+        }, {
+          loader: 'sass-loader', // compiles Sass to CSS
+        }],
+      },
+    ],
+  },
+  output: {
+    path: BUILD_DIR,
+    filename: 'app.js',
+  },
+};
+
+const server = {
+  entry: './server.jsx',
+  target: 'node',
+  output: {
+    path: BUILD_DIR,
+    filename: 'app-server.js',
+    libraryTarget: 'commonjs-module',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        include: APP_DIR,
+        use: ['babel-loader'],
+      },
+      {
+        test: /\.scss$$/,
+        use: [{
+          loader: 'css-loader', // translates CSS into CommonJS
+        }, {
+          loader: 'sass-loader', // compiles Sass to CSS
+        }],
+      },
+    ],
+  },
+};
+
+module.exports = [
+  Object.assign({}, common, client),
+  Object.assign({}, common, server),
+];

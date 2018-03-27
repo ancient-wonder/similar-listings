@@ -19,7 +19,7 @@ const PROXY_PORT = parseInt(process.env.PROXY_PORT, 10);
 const app = express();
 const client = redis.createClient(6379);
 
-const PUBLIC_DIR = path.join(__dirname, '../public');
+const PUBLIC_DIR = path.join(__dirname, '../public/dist');
 
 const cache = (request, response, next) => {
   const id = request.params.id;
@@ -41,12 +41,6 @@ app.use(cors(`http://${HOST}:${PROXY_PORT}`));
 app.use('/listings/:id', express.static(PUBLIC_DIR));
 app.use(express.static(PUBLIC_DIR));
 app.use(bodyParser.json());
-
-app.get('*.js', (req, res, next) => {
-  req.url = req.url + '.gz';
-  res.set('Content-Encoding', 'gzip');
-  next();
-});
 
 app.get('/listings/:id/similar_listings', cache, async (req, res) => {
 // app.get('/listings/:id/similar_listings', async (req, res) => {
